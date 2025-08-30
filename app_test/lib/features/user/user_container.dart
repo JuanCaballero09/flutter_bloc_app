@@ -9,6 +9,7 @@ import 'widgets/loading_user.dart';
 import 'widgets/success_user.dart';
 
 class UserContainer extends StatelessWidget {
+  const UserContainer({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -31,43 +32,13 @@ class UserContainer extends StatelessWidget {
       child: BlocBuilder<UserBloc, UserState>(
         builder: (context, state) {
           if (state is UserInitial) {
-            return Column(
-              children: [
-                InitialUser(),
-                ElevatedButton(
-                  onPressed: () {
-                    context.read<UserBloc>().add(LoadUser());
-                  },
-                  child: Text("Cargar usuario"),
-                ),
-              ],
-            );
+            return InitialUser();
           } else if (state is UserLoading) {
             return LoadingUser();
           } else if (state is UserSuccess) {
-            return Column(
-              children: [
-                SuccessUser(jsonUser: state.user),
-                ElevatedButton(
-                  onPressed: () {
-                    context.read<UserBloc>().add(RefresUser());
-                  },
-                  child: Text("Refrescar usuario"),
-                ),
-              ],
-            );
+            return SuccessUser(jsonUser: state.user);
           } else if (state is UserFailed) {
-            return Column(
-              children: [
-                FailedUser(),
-                ElevatedButton(
-                  onPressed: () {
-                    context.read<UserBloc>().add(LoadUser());
-                  },
-                  child: Text("Reintentar"),
-                ),
-              ],
-            );
+            return FailedUser();
           }
           return SizedBox();
         },

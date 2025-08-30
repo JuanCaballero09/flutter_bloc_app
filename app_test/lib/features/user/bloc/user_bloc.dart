@@ -28,16 +28,17 @@ class UserBloc extends Bloc<UserEvent, UserState> {
       }
     });
 
-    on<RefresUser>((event, emit) async {
-      emit(UserLoading());
+    // Pruebas de Estado
 
-      await Future.delayed(Duration(seconds: 1)); // Simula refresco
-
-      emit(UserSuccess({
-        "email": "nuevo@gmail.com",
-        "nombre": "Andrea",
-        "saldo": 5000,
-      }));
-    });
+    on<InitialUserEv>((event, emit) async => emit(UserInitial()));
+    on<LoadinUserEv>((event, emit) async => emit(UserLoading()));
+    on<FailedUserEv>((event, emit) async => emit(UserFailed("Error")));
+    on<SuccessUserEv>((event, emit) async => emit(UserSuccess(
+      {
+        "email": "user@gmail.com",
+        "nombre": "Carlos",
+        "saldo": 12000,
+      }
+    )));
   }
 }

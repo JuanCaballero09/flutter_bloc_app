@@ -9,4 +9,9 @@ sealed class UserEvent extends Equatable {
 
 class LoadUser extends UserEvent {}
 
-class RefresUser extends UserEvent {}
+
+// Pruebas de Estado
+class InitialUserEv extends UserEvent {}
+class LoadinUserEv extends UserEvent {}
+class FailedUserEv extends UserEvent {}
+class SuccessUserEv extends UserEvent {}

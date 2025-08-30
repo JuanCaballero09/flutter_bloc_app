@@ -13,7 +13,7 @@ class InitialTask extends StatelessWidget {
         SizedBox(height: 30,),
         Text("No hay tareas disponibles", style: TextStyle(fontSize: 26, fontWeight: FontWeight.bold, ),),
         SizedBox(height: 20,),
-        Icon(Icons.task_alt, size: 50,)
+        Icon(Icons.notifications, size: 50,)
       ],
     );
   }

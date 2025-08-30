@@ -1,3 +1,4 @@
+import 'package:app_test/features/task/bloc/task_bloc.dart';
 import 'package:app_test/features/user/bloc/user_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -14,8 +15,11 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => UserBloc(),
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider( create: (_) => UserBloc()),
+        BlocProvider( create: (_) => TaskBloc()..add(LoadTask()))
+      ],
       child: MaterialApp(
         title: "AppBlock",
         home: HomeView()
@@ -23,3 +27,5 @@ class MyApp extends StatelessWidget {
     );
   }
 }
+
+
