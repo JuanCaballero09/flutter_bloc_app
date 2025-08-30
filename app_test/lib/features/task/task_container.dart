@@ -27,7 +27,7 @@ class TaskContainer extends StatelessWidget {
           Text("Tareas", style: TextStyle(fontSize: 18, color: Colors.black, fontWeight: FontWeight.bold), ),
           SizedBox(height: 10,),
           Expanded(
-            child: SuccessTask(jsonTask: jsonTask,),
+            child: InitialTask(),
           )
         ],
       ) 

@@ -16,24 +16,24 @@ class TaskCard extends StatelessWidget {
       padding: EdgeInsets.all(10),
       margin: EdgeInsets.only(bottom: 10),
       decoration: BoxDecoration(
-        color: Colors.grey,
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(12),
         boxShadow: [
         BoxShadow(
             // ignore: deprecated_member_use
-            color: Colors.grey.withOpacity(0.5),
-            spreadRadius: 2,
-            blurRadius: 10,
-            offset: Offset(0, 0),
+            color: Colors.black.withOpacity(0.15),
+            spreadRadius: 1,
+            blurRadius: 5,
+            offset: Offset(0, 3),
           )
-        ],
-        borderRadius: BorderRadius.circular(16)
+        ]
       ),
       width: double.infinity,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text(titulo,style: TextStyle(),),
-          Text(descripcion,style: TextStyle(),)
+          Text(titulo,style: TextStyle(fontSize: 20,  fontWeight: FontWeight.bold),),
+          Text("- $descripcion",style: TextStyle(fontSize: 16),)
         ],
       ),
     );
