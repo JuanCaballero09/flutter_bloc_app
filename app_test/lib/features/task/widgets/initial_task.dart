@@ -1,8 +1,8 @@
 
 import 'package:flutter/material.dart';
 
-class InitialTareas extends StatelessWidget {
-  const InitialTareas({
+class InitialTask extends StatelessWidget {
+  const InitialTask({
     super.key,
   });
 

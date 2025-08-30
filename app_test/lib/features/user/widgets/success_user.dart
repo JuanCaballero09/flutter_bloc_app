@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class SuccessInfoWidget extends StatelessWidget {
-  const SuccessInfoWidget({
+class SuccessUser extends StatelessWidget {
+  const SuccessUser({
     super.key,
     required this.jsonUser,
   });

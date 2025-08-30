@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class FailedTareas extends StatelessWidget {
-  const FailedTareas({
+class FailedTask extends StatelessWidget {
+  const FailedTask({
     super.key,
   });
 

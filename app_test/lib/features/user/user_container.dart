@@ -1,11 +1,12 @@
+import 'package:app_test/features/user/widgets/initial_user.dart';
 import 'package:flutter/material.dart';
 
-import 'success_info.dart';
-import 'failed_info.dart';
-import 'loading_info.dart';
-import 'initial_info.dart';
+import 'widgets/failed_user.dart';
+import 'widgets/initial_user.dart';
+import 'widgets/loading_user.dart';
+import 'widgets/success_user.dart';
 
-class InfoWidget extends StatelessWidget {  
+class UserContainer extends StatelessWidget {  
   
   final Map<String, dynamic> jsonUser = {
     "email": "user@gmail.com",
@@ -31,7 +32,7 @@ class InfoWidget extends StatelessWidget {
           )
         ]
       ),
-      child: InitialInfoWidget()
+      child: InitialUser()
     );
   }
 }

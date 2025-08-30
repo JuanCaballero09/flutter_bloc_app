@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class LoadingInfoWidget extends StatelessWidget {
-  const LoadingInfoWidget({
+class LoadingUser extends StatelessWidget {
+  const LoadingUser({
     super.key,
   });
 

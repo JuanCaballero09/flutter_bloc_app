@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'views/homeView.dart';
+import 'views/home_view.dart';
 
 void main() {
   runApp(MyApp());
@@ -13,7 +13,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: "AppBlock",
-      home: HomeViews()
+      home: HomeView()
     );
   }
 
