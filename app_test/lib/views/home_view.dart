@@ -22,39 +22,41 @@ class HomeView extends StatelessWidget {
             child: TaskContainer()
           ),
           Text("Test Estados"),
-          Row(
-            children: [
-              ElevatedButton(
-                onPressed: (){
-                  context.read<UserBloc>().add(InitialUserEv());
-                  context.read<TaskBloc>().add(InitialTaskEv());
-                },
-                child: Text("Inicial")
-              ),
+          Center(
+            child: Row(
+              children: [
+                ElevatedButton(
+                  onPressed: (){
+                    context.read<UserBloc>().add(InitialUserEv());
+                    context.read<TaskBloc>().add(InitialTaskEv());
+                  },
+                  child: Text("Inicial")
+                ),
 
-              ElevatedButton(
-                onPressed: (){
-                  context.read<UserBloc>().add(LoadinUserEv());
-                  context.read<TaskBloc>().add(LoadinTaskEv());
-                },
-                child: Text("Cargando")
-              ),
-              ElevatedButton(
-                onPressed: (){
-                  context.read<UserBloc>().add(FailedUserEv());
-                  context.read<TaskBloc>().add(FailedTaskEv());
-                },
-                child: Text("Fallo")
-              ),
+                ElevatedButton(
+                  onPressed: (){
+                    context.read<UserBloc>().add(LoadinUserEv());
+                    context.read<TaskBloc>().add(LoadinTaskEv());
+                  },
+                  child: Text("Cargando")
+                ),
+                ElevatedButton(
+                  onPressed: (){
+                    context.read<UserBloc>().add(FailedUserEv());
+                    context.read<TaskBloc>().add(FailedTaskEv());
+                  },
+                  child: Text("Fallo")
+                ),
 
-              ElevatedButton(
-                onPressed: (){
-                  context.read<UserBloc>().add(SuccessUserEv());
-                  context.read<TaskBloc>().add(SuccessTaskEv());
-                },
-                child: Text("Success")
-              ),
-            ],
+                ElevatedButton(
+                  onPressed: (){
+                    context.read<UserBloc>().add(SuccessUserEv());
+                    context.read<TaskBloc>().add(SuccessTaskEv());
+                  },
+                  child: Text("Success")
+                ),
+              ],
+            ),
           )
         ],
       ),

@@ -17,7 +17,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiBlocProvider(
       providers: [
-        BlocProvider( create: (_) => UserBloc()),
+        BlocProvider( create: (_) => UserBloc()..add(LoadUser())),
         BlocProvider( create: (_) => TaskBloc()..add(LoadTask()))
       ],
       child: MaterialApp(
