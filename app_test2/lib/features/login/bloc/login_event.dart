@@ -7,6 +7,8 @@ sealed class LoginEvent extends Equatable {
   List<Object> get props => [];
 }
 
+class LoginLoginEvent extends LoginEvent {}
+
 class CreateUserEvent extends LoginEvent {
   final String cedula;
   final String nombre;

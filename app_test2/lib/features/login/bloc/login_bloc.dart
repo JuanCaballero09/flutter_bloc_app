@@ -9,5 +9,9 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
     on<LoginEvent>((event, emit) {
       emit(LoginInitial());
     });
+
+    on<LoginLoginEvent>((event, emit) {
+      emit(LoginLoading());
+    });
   }
 }
