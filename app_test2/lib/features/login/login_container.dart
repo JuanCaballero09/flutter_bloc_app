@@ -2,16 +2,27 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'bloc/login_bloc.dart';
-import 'widgets/failedWidget.dart';
-import 'widgets/initialWidget.dart';
-import 'widgets/loadingWidget.dart';
+import 'widgets/failed_widget.dart';
+import 'widgets/initial_widget.dart';
+import 'widgets/loading_widget.dart';
+
+import '../../views/home.dart';
 
 class LoginContainer extends StatelessWidget {
   const LoginContainer({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<LoginBloc, LoginState>(
+    return BlocConsumer<LoginBloc, LoginState>(
+
+      listener: (context, state) {
+        if (state is LoginSuccess) {
+          Navigator.of(context).pushReplacement(
+            MaterialPageRoute(builder: (context) => HomeView())
+          );
+        }
+      },
+
       builder: (context, state) {
         if (state is LoginInitial) {
           return InitialWidget();
@@ -19,9 +30,9 @@ class LoginContainer extends StatelessWidget {
           return Center(child: LoadingWidget());
         } else if (state is LoginFailed) {
           return Center(child: FailedWidget());
+        } else {
+          return SizedBox.shrink();
         }
-
-        return SizedBox.shrink();
       },
     );
   }

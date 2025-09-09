@@ -1,0 +1,10 @@
+part of 'home_info_bloc.dart';
+
+sealed class HomeInfoState extends Equatable {
+  const HomeInfoState();
+  
+  @override
+  List<Object> get props => [];
+}
+
+final class HomeInfoInitial extends HomeInfoState {}

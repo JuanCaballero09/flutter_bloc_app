@@ -10,16 +10,21 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
       emit(LoginInitial());
     });
 
-    on<LoginLoginEvent>((event, emit) async{
+    on<LoginRetryEvent>((event, emit) async{
       emit(LoginLoading());
 
       await Future.delayed(Duration(seconds: 2));
 
-      emit(LoginFailed());
+      emit(LoginSuccess());
+
     });
 
-    on<LoginRetryEvent>((event, emit) {
+    on<CreateUserEvent>((event, emit) async {
       emit(LoginLoading());
+
+      await Future.delayed(Duration(seconds: 2));
+
+      emit(LoginSuccess());
     });
   }
 }
