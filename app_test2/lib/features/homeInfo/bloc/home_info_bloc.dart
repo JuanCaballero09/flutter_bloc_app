@@ -6,8 +6,20 @@ part 'home_info_state.dart';
 
 class HomeInfoBloc extends Bloc<HomeInfoEvent, HomeInfoState> {
   HomeInfoBloc() : super(HomeInfoInitial()) {
-    on<HomeInfoEvent>((event, emit) {
-      // TODO: implement event handler
+    on<CargarHomeInfo>((event, emit) async{
+      emit(HomeInfoLoading());
+
+      await Future.delayed(Duration(seconds: 2));
+
+      emit(HomeInfoFailed());
+    });
+
+    on<RetryHomeInfo>((event, emit) async{
+      emit(HomeInfoLoading());
+
+      await Future.delayed(Duration(seconds: 2));
+
+      emit(HomeInfoFailed());
     });
   }
 }

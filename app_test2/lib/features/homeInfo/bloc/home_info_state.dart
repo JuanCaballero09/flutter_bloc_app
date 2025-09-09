@@ -8,3 +8,7 @@ sealed class HomeInfoState extends Equatable {
 }
 
 final class HomeInfoInitial extends HomeInfoState {}
+
+final class HomeInfoLoading extends HomeInfoState {}
+
+final class HomeInfoFailed extends HomeInfoState {}

@@ -35,6 +35,7 @@ class InitialWidget extends StatelessWidget {
               const SizedBox(height: 8),
 
               TextField(
+                maxLength: 10,
                 cursorColor: Colors.blueAccent,
                 controller: cedulaController,
                 keyboardType: TextInputType.number,
@@ -91,10 +92,11 @@ class InitialWidget extends StatelessWidget {
                   final cedula = int.tryParse(cedulaText) ?? 0;
                   context.read<LoginBloc>().add(CreateUserEvent(cedula: cedula, nombre: nombre));
                 },
-                icon: Icon(Icons.login, size: 24,),
-                label: Text("Iniciar Sesión", style: TextStyle(color: Colors.black),),
+                icon: Icon(Icons.person_add, size: 24,),
+                label: Text("Crear Usuario", style: TextStyle(color: Colors.white),),
                 style: ElevatedButton.styleFrom(
-                  iconColor: Colors.blueAccent,
+                  backgroundColor: Colors.blueAccent,
+                  iconColor: Colors.white,
                   padding: const EdgeInsets.all(25),
                   textStyle: const TextStyle(fontSize: 20),
                   shape: RoundedRectangleBorder(
