@@ -9,6 +9,8 @@ sealed class LoginEvent extends Equatable {
 
 class LoginLoginEvent extends LoginEvent {}
 
+class LoginRetryEvent extends LoginEvent {}
+
 class CreateUserEvent extends LoginEvent {
   final String cedula;
   final String nombre;
