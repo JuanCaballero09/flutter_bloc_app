@@ -12,3 +12,11 @@ final class HomeInfoInitial extends HomeInfoState {}
 final class HomeInfoLoading extends HomeInfoState {}
 
 final class HomeInfoFailed extends HomeInfoState {}
+
+final class HomeInfoSuccess extends HomeInfoState {
+  final List<User> users;
+  const HomeInfoSuccess(this.users);
+
+  @override
+  List<Object> get props => [users];
+}

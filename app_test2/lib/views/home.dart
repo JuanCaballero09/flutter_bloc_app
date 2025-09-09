@@ -14,9 +14,11 @@ class HomeView extends StatelessWidget {
       body: Column(
         children: [
           Padding(
-            padding: EdgeInsetsGeometry.symmetric(horizontal: 20, vertical: 80),
+            padding: EdgeInsetsGeometry.symmetric(horizontal: 20, vertical: 60),
             child: Image.asset('assets/images/carro-onix-hatchback.png'),
           ),
+          Text('Bienvenido $nombre', style: TextStyle(fontSize: 24),),
+          SizedBox(height: 30),
           BlocProvider(
             create: (context) => HomeInfoBloc()..add(CargarHomeInfo()),
             child: HomeinfoContainer(nombre: nombre),

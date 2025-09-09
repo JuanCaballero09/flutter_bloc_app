@@ -18,7 +18,7 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
     on<CreateUserEvent>((event, emit) async {
       emit(LoginLoading());
 
-      await Future.delayed(Duration(seconds: 2));
+      await Future.delayed(Duration(seconds: 1));
 
       emit(LoginSuccess(event.nombre));
     });
