@@ -18,7 +18,7 @@ class LoginContainer extends StatelessWidget {
       listener: (context, state) {
         if (state is LoginSuccess) {
           Navigator.of(context).pushReplacement(
-            MaterialPageRoute(builder: (context) => HomeView())
+            MaterialPageRoute(builder: (_) => HomeView(nombre: state.nombre,))
           );
         }
       },

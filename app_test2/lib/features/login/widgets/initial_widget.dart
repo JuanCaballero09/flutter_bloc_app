@@ -82,6 +82,12 @@ class InitialWidget extends StatelessWidget {
                     );
                     return;
                   }
+                  if (cedulaText.length < 8 || nombre.length < 3){
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      SnackBar(content: Text("Por favor ingrese datos validos"))
+                    );
+                    return;
+                  }
                   final cedula = int.tryParse(cedulaText) ?? 0;
                   context.read<LoginBloc>().add(CreateUserEvent(cedula: cedula, nombre: nombre));
                 },

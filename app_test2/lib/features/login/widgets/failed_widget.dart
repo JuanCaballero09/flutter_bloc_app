@@ -10,18 +10,36 @@ class FailedWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Center(
       child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
+        mainAxisSize: MainAxisSize.min,
         children: [
-          Text(
-            'Login Failed',
-            style: TextStyle(fontSize: 24, color: Colors.red),
+          Icon(
+            Icons.error_outline,
+            color: Colors.red,
+            size: 48,
           ),
-          SizedBox(height: 16),
-          ElevatedButton(
+          const SizedBox(height: 12),
+          Text(
+            'Ha sucedido un error en el registro',
+            style: TextStyle(
+              fontSize: 18,
+              color: Colors.red,
+              fontWeight: FontWeight.w600,
+            ),
+            textAlign: TextAlign.center,
+          ),
+          const SizedBox(height: 18),
+          ElevatedButton.icon(
             onPressed: () {
               context.read<LoginBloc>().add(LoginRetryEvent());
             },
-            child: Text('Retry'),
+            icon: Icon(Icons.refresh),
+            label: Text('Reintentar'),
+            style: ElevatedButton.styleFrom(
+              backgroundColor: Colors.red,
+              foregroundColor: Colors.white,
+              padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 10),
+              textStyle: const TextStyle(fontSize: 15),
+            ),
           ),
         ],
       ),

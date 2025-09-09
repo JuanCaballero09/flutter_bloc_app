@@ -11,11 +11,7 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
     });
 
     on<LoginRetryEvent>((event, emit) async{
-      emit(LoginLoading());
-
-      await Future.delayed(Duration(seconds: 2));
-
-      emit(LoginSuccess());
+      emit(LoginInitial());
 
     });
 
@@ -24,7 +20,7 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
 
       await Future.delayed(Duration(seconds: 2));
 
-      emit(LoginSuccess());
+      emit(LoginSuccess(event.nombre));
     });
   }
 }

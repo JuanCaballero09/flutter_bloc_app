@@ -1,18 +1,24 @@
-
-import 'package:app_test2/features/homeInfo/bloc/home_info_bloc.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
+
+import '../features/homeInfo/homeInfo_container.dart';
 
 class HomeView extends StatelessWidget {
-  const HomeView({super.key});
-
+  final String nombre;
+  const HomeView({super.key, required this.nombre});
+  
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        Text("Hola"),
-        Text("Bienvenido al home")
-      ],
+    return Scaffold(
+      body: Column(
+        children: [
+          Padding(
+            padding: EdgeInsetsGeometry.symmetric(horizontal: 20, vertical: 80),
+            child: Image.asset('assets/images/carro-onix-hatchback.png'),
+          ),
+          HomeinfoContainer(nombre: nombre)
+        ],
+      )
     );
   }
+
 }

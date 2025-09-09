@@ -9,9 +9,16 @@ class LoadingWidget extends StatelessWidget {
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        CircularProgressIndicator(),
+        SizedBox(
+          width: 70,
+          height: 70,
+          child: CircularProgressIndicator(
+            color: Colors.blueAccent,
+            strokeWidth: 8,
+          ),
+        ),
         SizedBox(height: 20),
-        Text("Cargando..."),
+        Text("Cargando...", style: TextStyle(fontSize: 24),),
       ],
     );
   }
