@@ -1,4 +1,6 @@
+import 'package:app_test2/features/homeInfo/bloc/home_info_bloc.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class FailedWidget extends StatelessWidget {
   const FailedWidget({super.key});
@@ -15,7 +17,7 @@ class FailedWidget extends StatelessWidget {
           SizedBox(height: 20),
           ElevatedButton.icon(
             onPressed: () {
-              // context.read<HomeInfoBloc>().add(RetryHomeInfo());
+              context.read<HomeInfoBloc>().add(CargarHomeInfo());
             },
             style: ElevatedButton.styleFrom(
               backgroundColor: Colors.red,

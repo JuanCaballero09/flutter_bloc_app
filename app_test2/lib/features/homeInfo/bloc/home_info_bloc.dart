@@ -13,38 +13,50 @@ part 'home_info_state.dart';
 
 class HomeInfoBloc extends Bloc<HomeInfoEvent, HomeInfoState> {
   HomeInfoBloc() : super(HomeInfoInitial()) {
-    on<CargarHomeInfo>((event, emit) async{
-      emit(HomeInfoLoading());
+    on<CargarHomeInfo>(_loadHomeInfo);
+    on<RetryHomeInfo>(_loadHomeInfo);
+  }
 
-      try {
-        final response = await http.get(Uri.parse('https://jsonplaceholder.typicode.com/users'));
+  Future<void> _loadHomeInfo(HomeInfoEvent event, Emitter<HomeInfoState> emit) async {
+    emit(HomeInfoLoading());
 
-        if (response.statusCode == 200) {
-          final decode = jsonDecode(response.body);
+    try {
+      final response = await http.get(
+        Uri.parse('https://jsonplaceholder.typicode.com/users'),
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json',
+          'User-Agent': 'Flutter App'
+        },
+      );
 
-          if (decode is List) {
-            final users =
-                decode
-                    .whereType<Map<String, dynamic>>()
-                    .map((e) => User.fromJson(e))
-                    .toList();
-            emit(HomeInfoSuccess(users));
-          } else {
-            print("Error: La respuesta no es una lista");
-            emit(HomeInfoFailed());
-          }
+      if (response.statusCode == 200) {
+        final decode = jsonDecode(response.body);
+
+        if (decode is List) {
+          final users =
+              decode
+                  .whereType<Map<String, dynamic>>()
+                  .map((e) => User.fromJson(e))
+                  .toList();
+          emit(HomeInfoSuccess(users));
         } else {
-          print("Error: Código de estado ${response.statusCode}");
+          print("Error: La respuesta no es una lista");
           emit(HomeInfoFailed());
         }
-      } catch (e) {
-        print("Error al realizar la petición: $e");
+      } else if (response.statusCode == 403) {
+        print("Error 403: Acceso prohibido - Verificar permisos o CORS");
+        emit(HomeInfoFailed());
+      } else if (response.statusCode == 429) {
+        print("Error 429: Demasiadas peticiones - Esperar antes de reintentar");
+        emit(HomeInfoFailed());
+      } else {
+        print("Error: Código de estado ${response.statusCode}");
         emit(HomeInfoFailed());
       }
-    });
-
-    on<RetryHomeInfo>((event, emit) async{
-      emit(HomeInfoLoading());
-    });
+    } catch (e) {
+      print("Error al realizar la petición: $e");
+      emit(HomeInfoFailed());
+    }
   }
 }

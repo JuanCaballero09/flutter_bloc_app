@@ -1,5 +1,8 @@
+import 'dart:convert';
+
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
+import 'package:http/http.dart' as http;
 
 part 'login_event.dart';
 part 'login_state.dart';
@@ -18,9 +21,30 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
     on<CreateUserEvent>((event, emit) async {
       emit(LoginLoading());
 
-      await Future.delayed(Duration(seconds: 1));
+      try{
+        final response = await http.post(
+          Uri.parse('https://jsonplaceholder.typicode.com/posts'),
+          headers: {'Content-Type': 'application/json'},
+          body: jsonEncode({
+            'name': event.nombre,
+            'cedula': event.cedula,
+          })
+        );
 
-      emit(LoginSuccess(event.nombre));
+        if (response.statusCode == 201) {
+          final decode = jsonDecode(response.body);
+          // print(decode);
+
+          emit(LoginSuccess(decode['name']));
+        } else {
+          emit(LoginFailed());
+          return;
+        }
+      } catch (e) {
+        emit(LoginFailed());
+        return;
+      }
+
     });
   }
 }
